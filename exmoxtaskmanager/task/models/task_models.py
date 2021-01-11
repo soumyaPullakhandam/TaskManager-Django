@@ -4,6 +4,9 @@ import django.utils.timezone
 
 
 class Task(models.Model):
+    """
+        Model for Task
+    """
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author', verbose_name="Created by")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', verbose_name="Assign to")
     title = models.CharField(blank=False, null=False, max_length=30)

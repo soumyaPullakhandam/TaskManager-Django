@@ -8,6 +8,9 @@ from .serializers import TaskSerializer, ReportsSerializer
 
 
 class TaskList(generics.ListCreateAPIView):
+    """
+        API for List and Create Task.
+    """
     permission_classes = [permissions.IsAuthenticated, IsAdminOrReadOnly]
     serializer_class = TaskSerializer
 
@@ -29,12 +32,18 @@ class TaskList(generics.ListCreateAPIView):
 
 
 class TaskUpdate(generics.RetrieveUpdateDestroyAPIView):
+    """
+        API for Update, Retrieve and Delete Task.
+    """
     permission_classes = [permissions.IsAuthenticated, IsAdminOrReadUpdateOnly]
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
 class ReportsList(generics.ListCreateAPIView):
+    """
+        API for User and Admin Task Report.
+    """
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ReportsSerializer
 

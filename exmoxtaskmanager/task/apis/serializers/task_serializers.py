@@ -4,6 +4,9 @@ from task.models import Task
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    """
+      Serializer for Task model.
+    """
     username = serializers.CharField(source='user', read_only=True)
     author_name = serializers.CharField(source='author', read_only=True)
 
@@ -13,6 +16,9 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 class ReportsSerializer(serializers.Serializer):
+    """
+        Serializer for Report model.
+    """
     user = serializers.CharField()
     total_users = serializers.IntegerField()
     pending_tasks = serializers.IntegerField()

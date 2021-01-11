@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 
 class TaskForm(forms.ModelForm):
+    """
+        Forms for Task
+    """
     class Meta:
         model = Task
         fields = '__all__'

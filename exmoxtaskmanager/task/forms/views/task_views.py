@@ -9,11 +9,17 @@ from task.forms.forms import TaskForm
 
 
 def home_view(request):
+    """
+        View to get users list for forms
+    """
     user_model = User.objects.filter(is_staff=False)
     return render(request, "home.html", {"user_model": user_model})
 
 
 def task_list(request, pk):
+    """
+        View to get task list based on user list for forms
+    """
     user_model = User.objects.filter(is_staff=False)
     task_model = Task.objects.filter(user=pk)
     user_detail = User.objects.get(pk=pk)
@@ -30,6 +36,9 @@ def task_list(request, pk):
 
 
 class TaskCreate(CreateView):
+    """
+        View to create Task for Forms
+    """
     model = Task
     form_class = TaskForm
     template_name = 'add_task.html'
@@ -41,6 +50,9 @@ class TaskCreate(CreateView):
 
 
 class TaskUpdate(UpdateView):
+    """
+        View to update Task for Forms
+    """
     model = Task
     form_class = TaskForm
     template_name = 'update_task.html'
@@ -48,6 +60,9 @@ class TaskUpdate(UpdateView):
 
 
 class TaskDelete(DeleteView):
+    """
+        View to delete Task for Forms
+    """
     model = Task
     form_class = TaskForm
     template_name = 'delete_task.html'
