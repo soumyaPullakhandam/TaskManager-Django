@@ -32,22 +32,3 @@ on tasks.
 # How Admin UI works:
 
 Admin will get all the list of users and assigned tasks. Admin can create a new task or update the existing one.
-
-# How to access:
-
-I. For React Native android app
-please check below link:
-https://drive.google.com/file/d/15jONkaZllea0UvtxHQzKa4_WMdyhcGrM/view?usp=sharing - every user can access
-
-
-II. For Admin UI (Django web app)
-http://www.iampac.de/ - for admin user
-
-III. Credentials
-Admin: username: bob, password: Test@123
-
-User1: username: john, password: Test@123
-
-User2: username: ram, password: Test@123
-
-User3: username: iron, password: Test@123
