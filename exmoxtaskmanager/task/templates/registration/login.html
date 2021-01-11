@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+    <section class="section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <h2 class="text-center btn-blue mb-4">Login</h2>
+                </div>
+            </div>
+            <form method="Post">
+                <div class="form-group">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+{#                    <button class="btn btn-secondary mybutton">Login</button>#}
+                    <p>
+                        <button class="btn btn-success">Login</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

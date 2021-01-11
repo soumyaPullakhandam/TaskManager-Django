@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres:10.13-alpine
+    container_name: db
+    env_file:
+      - db/db_env
+    networks:
+      - db_network
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+
+  exmoxtaskmanager:
+    build:
+      context: ./exmoxtaskmanager
+    command: gunicorn exmoxtaskmanager.wsgi:application --bind 0.0.0.0:8000
+    #        gunicorn --bind 0.0.0.0:8000 --chdir exmoxtaskmanager exmoxtaskmanager.wsgi:application
+    env_file:
+      - .env
+    volumes:
+      - ./exmoxtaskmanager:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+    networks:
+      - nginx_network
+      - db_network
+    depends_on:
+      - db
+    links:
+      - db:db
+
+  nginx:
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - exmoxtaskmanager
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  db_volume:
+  static_volume:
+  media_volume:

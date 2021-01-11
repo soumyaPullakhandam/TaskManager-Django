@@ -1,0 +1,8 @@
+# Project exclude paths
+/exmoxtaskmanager/venv/
+/exmoxtaskmanager/.idea/
+/exmoxtaskmanager/task/migrations/
+/exmoxtaskmanager/static
+/exmoxtaskmanager/media
+/exmoxtaskmanager/data.json
+.travis.yml
